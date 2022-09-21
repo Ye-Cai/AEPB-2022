@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private int maxCapacity;
-    private Map<Ticket, Car> ticketCarMap;
+    private final int maxCapacity;
+    private final Map<Ticket, Car> ticketCarMap;
 
     public ParkingLot(int maxCapacity) {
         this.maxCapacity = maxCapacity;
@@ -13,6 +13,9 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
+        if(ticketCarMap.size() >= maxCapacity){
+            throw new RuntimeException("the parking lot is full");
+        }
         Ticket ticket = new Ticket();
         ticketCarMap.put(ticket, car);
         return ticket;
