@@ -65,4 +65,15 @@ class ParkingLotTest {
 
         assertEquals("the ticket is invalid", exception.getMessage());
     }
+
+    @Test
+    void should_error_for_the_invalid_ticket_when_pick_a_car() {
+        ParkingLot parkingLot = new ParkingLot(100);
+        Ticket ticket = new Ticket();
+
+        RuntimeException exception = assertThrows(RuntimeException.class,
+            () -> parkingLot.pick(ticket));
+
+        assertEquals("the ticket is invalid", exception.getMessage());
+    }
 }
