@@ -52,4 +52,17 @@ class ParkingLotTest {
 
         assertEquals("the car has checked in", exception.getMessage());
     }
+
+    @Test
+    void should_error_for_the_ticket_has_used_when_pick_a_car() {
+        ParkingLot parkingLot = new ParkingLot(100);
+        Car car = new Car("鄂A123456");
+        Ticket ticket = parkingLot.park(car);
+        parkingLot.pick(ticket);
+
+        RuntimeException exception = assertThrows(RuntimeException.class,
+            () -> parkingLot.pick(ticket));
+
+        assertEquals("the ticket is invalid", exception.getMessage());
+    }
 }

@@ -25,6 +25,11 @@ public class ParkingLot {
     }
 
     public Car pick(Ticket ticket) {
-        return ticketCarMap.get(ticket);
+        if(!ticketCarMap.containsKey(ticket)){
+            throw new RuntimeException("the ticket is invalid");
+        }
+        Car car = ticketCarMap.get(ticket);
+        ticketCarMap.remove(ticket);
+        return car;
     }
 }
