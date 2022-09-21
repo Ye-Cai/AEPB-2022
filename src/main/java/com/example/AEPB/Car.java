@@ -6,6 +6,7 @@ public class Car {
     private final String licenseNumber;
 
     public Car(String licenseNumber) {
+        //TODO: 车牌校验
         this.licenseNumber = licenseNumber;
     }
 
