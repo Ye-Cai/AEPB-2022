@@ -13,8 +13,11 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
-        if(ticketCarMap.size() >= maxCapacity){
+        if (ticketCarMap.size() >= maxCapacity) {
             throw new RuntimeException("the parking lot is full");
+        }
+        if(ticketCarMap.containsValue(car)){
+            throw new RuntimeException("the car has checked in");
         }
         Ticket ticket = new Ticket();
         ticketCarMap.put(ticket, car);

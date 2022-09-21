@@ -1,9 +1,28 @@
 package com.example.AEPB;
 
+import java.util.Objects;
+
 public class Car {
-    private String licenseNumber;
+    private final String licenseNumber;
 
     public Car(String licenseNumber) {
         this.licenseNumber = licenseNumber;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Car car = (Car) obj;
+        return Objects.equals(licenseNumber, car.licenseNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(licenseNumber);
     }
 }

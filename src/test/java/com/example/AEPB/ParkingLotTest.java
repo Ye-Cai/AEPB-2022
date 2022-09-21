@@ -39,4 +39,17 @@ class ParkingLotTest {
 
         assertEquals("the parking lot is full", exception.getMessage());
     }
+
+    @Test
+    void should_error_for_the_car_has_checked_in_when_park_a_car() {
+        ParkingLot parkingLot = new ParkingLot(100);
+        Car car = new Car("鄂A123456");
+        parkingLot.park(car);
+        Car car2 = new Car("鄂A123456");
+
+        RuntimeException exception = assertThrows(RuntimeException.class,
+            () -> parkingLot.park(car2));
+
+        assertEquals("the car has checked in", exception.getMessage());
+    }
 }
