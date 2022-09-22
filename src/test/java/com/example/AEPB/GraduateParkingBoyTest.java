@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class GraduateParkingBoyTest {
     @Test
     void should_success_get_the_first_parking_lot_ticket_when_park_car_give_all_parking_lot_not_full() {
-        ParkingLot parkingLotA = new ParkingLot(100);
-        ParkingLot parkingLotB = new ParkingLot(100);
-        ParkingLot parkingLotC = new ParkingLot(100);
+        ParkingLot parkingLotA = new ParkingLot(100, "A");
+        ParkingLot parkingLotB = new ParkingLot(100, "B");
+        ParkingLot parkingLotC = new ParkingLot(100, "C");
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car car = new Car("鄂A12345");
 
@@ -21,4 +21,5 @@ class GraduateParkingBoyTest {
         assertNotNull(ticket);
         assertEquals("A", ticket.getParkingLotName());
     }
+
 }

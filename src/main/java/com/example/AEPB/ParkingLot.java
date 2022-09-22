@@ -6,10 +6,21 @@ import java.util.Map;
 public class ParkingLot {
     private final int maxCapacity;
     private final Map<Ticket, Car> ticketCarMap;
+    private String name = "";
 
     public ParkingLot(int maxCapacity) {
         this.maxCapacity = maxCapacity;
         this.ticketCarMap = new HashMap<>(maxCapacity);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ParkingLot(int maxCapacity, String name) {
+        this.maxCapacity = maxCapacity;
+        this.ticketCarMap = new HashMap<>(maxCapacity);
+        this.name = name;
     }
 
     public Ticket park(Car car) {
@@ -19,7 +30,7 @@ public class ParkingLot {
         if (ticketCarMap.containsValue(car)) {
             throw new RuntimeException("the car has checked in");
         }
-        Ticket ticket = new Ticket();
+        Ticket ticket = new Ticket(this);
         ticketCarMap.put(ticket, car);
         return ticket;
     }

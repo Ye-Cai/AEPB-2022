@@ -9,7 +9,7 @@ public class GraduateParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public Ticket park(Car car){
-        return null;
+    public Ticket park(Car car) {
+        return parkingLots.get(0).park(car);
     }
 }
