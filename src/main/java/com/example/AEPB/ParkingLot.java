@@ -6,21 +6,16 @@ import java.util.Map;
 public class ParkingLot {
     private final int maxCapacity;
     private final Map<Ticket, Car> ticketCarMap;
-    private String name = "";
-
-    public ParkingLot(int maxCapacity) {
-        this.maxCapacity = maxCapacity;
-        this.ticketCarMap = new HashMap<>(maxCapacity);
-    }
-
-    public String getName() {
-        return name;
-    }
+    private final String name;
 
     public ParkingLot(int maxCapacity, String name) {
         this.maxCapacity = maxCapacity;
         this.ticketCarMap = new HashMap<>(maxCapacity);
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Ticket park(Car car) {
