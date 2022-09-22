@@ -12,6 +12,7 @@ public class GraduateParkingBoy {
     }
 
     public Ticket park(Car car) {
+        parkingLots.forEach(lot-> lot.checkCarExistInParkingLot(car));
         return parkingLots.stream()
                           .dropWhile(ParkingLot::isFull)
                           .findFirst()

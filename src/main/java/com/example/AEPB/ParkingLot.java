@@ -24,12 +24,16 @@ public class ParkingLot {
         if (ticketCarMap.size() >= maxCapacity) {
             throw ParkingLotFullException.ofOne();
         }
-        if (ticketCarMap.containsValue(car)) {
-            throw new RuntimeException("the car has checked in");
-        }
+        checkCarExistInParkingLot(car);
         Ticket ticket = new Ticket(this);
         ticketCarMap.put(ticket, car);
         return ticket;
+    }
+
+    public void checkCarExistInParkingLot(Car car) {
+        if (ticketCarMap.containsValue(car)) {
+            throw new RuntimeException("the car has checked in");
+        }
     }
 
     public Car pick(Ticket ticket) {
