@@ -1,5 +1,7 @@
 package com.example.AEPB;
 
+import com.example.AEPB.exception.ParkingLotFullException;
+
 import java.util.List;
 
 public class GraduateParkingBoy {
@@ -14,7 +16,7 @@ public class GraduateParkingBoy {
                           .dropWhile(ParkingLot::isFull)
                           .findFirst()
                           .map(parkingLot -> parkingLot.park(car))
-                          .orElseThrow(() -> new RuntimeException("all parking lot is full"));
+                          .orElseThrow(ParkingLotFullException::ofAll);
     }
 
     public Car pick(Ticket ticket) {

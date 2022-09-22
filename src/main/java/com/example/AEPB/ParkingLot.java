@@ -1,5 +1,7 @@
 package com.example.AEPB;
 
+import com.example.AEPB.exception.ParkingLotFullException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +22,7 @@ public class ParkingLot {
 
     public Ticket park(Car car) {
         if (ticketCarMap.size() >= maxCapacity) {
-            throw new RuntimeException("the parking lot is full");
+            throw ParkingLotFullException.ofOne();
         }
         if (ticketCarMap.containsValue(car)) {
             throw new RuntimeException("the car has checked in");

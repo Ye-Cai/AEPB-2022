@@ -1,5 +1,6 @@
 package com.example.AEPB;
 
+import com.example.AEPB.exception.ParkingLotFullException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -61,7 +62,7 @@ class GraduateParkingBoyTest {
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car car = new Car("鄂A12345");
 
-        RuntimeException exception = assertThrows(RuntimeException.class,
+        ParkingLotFullException exception = assertThrows(ParkingLotFullException.class,
             () -> graduateParkingBoy.park(car));
 
         assertEquals("all parking lot is full", exception.getMessage());
