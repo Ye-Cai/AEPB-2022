@@ -22,4 +22,18 @@ class GraduateParkingBoyTest {
         assertEquals("A", ticket.getParkingLotName());
     }
 
+
+    @Test
+    void should_success_park_in_B_parking_lot_when_park_car_give_A_parking_lot_is_full_and_B_C__parking_lot_not_full() {
+        ParkingLot parkingLotA = new ParkingLot(0, "A");
+        ParkingLot parkingLotB = new ParkingLot(100, "B");
+        ParkingLot parkingLotC = new ParkingLot(100, "C");
+        GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
+        Car car = new Car("鄂A12345");
+
+        Ticket ticket = graduateParkingBoy.park(car);
+
+        assertNotNull(ticket);
+        assertEquals("B", ticket.getParkingLotName());
+    }
 }
