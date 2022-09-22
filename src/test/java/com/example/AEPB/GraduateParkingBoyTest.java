@@ -67,4 +67,19 @@ class GraduateParkingBoyTest {
 
         assertEquals("all parking lot is full", exception.getMessage());
     }
+
+    @Test
+    void should_throw_exception_when_parking_car_give_two_car_with_same_license_number() {
+        ParkingLot parkingLotA = new ParkingLot(10, "A");
+        ParkingLot parkingLotB = new ParkingLot(10, "B");
+        parkingLotB.park(new Car("鄂A12345"));
+        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
+        Car car = new Car("鄂A12345");
+
+        RuntimeException exception = assertThrows(RuntimeException.class,
+            () -> graduateParkingBoy.park(car));
+
+        assertEquals("the car has checked in", exception.getMessage());
+    }
 }
