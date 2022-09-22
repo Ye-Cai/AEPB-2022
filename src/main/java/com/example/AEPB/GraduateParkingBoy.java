@@ -16,4 +16,8 @@ public class GraduateParkingBoy {
                           .map(parkingLot -> parkingLot.park(car))
                           .orElse(null);
     }
+
+    public Car pick(Ticket ticket) {
+        return null;
+    }
 }

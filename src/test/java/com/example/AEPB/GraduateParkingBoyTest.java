@@ -37,4 +37,18 @@ class GraduateParkingBoyTest {
         assertNotNull(ticket);
         assertEquals("B", ticket.getParkingLotName());
     }
+
+    @Test
+    void should_success_pick_the_car_from_B_parking_lot_when_pick_car_give_B_parking_lot_ticket() {
+        ParkingLot parkingLotA = new ParkingLot(100, "A");
+        ParkingLot parkingLotB = new ParkingLot(100, "B");
+        Ticket ticket = parkingLotB.park(new Car("鄂A12345"));
+        ParkingLot parkingLotC = new ParkingLot(100, "C");
+        GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
+
+        Car car = graduateParkingBoy.pick(ticket);
+
+        assertNotNull(car);
+        assertEquals("鄂A12345", car.getLicenseNumber());
+    }
 }

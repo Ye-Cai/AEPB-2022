@@ -10,6 +10,10 @@ public class Car {
         this.licenseNumber = licenseNumber;
     }
 
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
