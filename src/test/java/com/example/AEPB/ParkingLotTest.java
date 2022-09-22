@@ -2,7 +2,9 @@ package com.example.AEPB;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParkingLotTest {
 
@@ -76,4 +78,5 @@ class ParkingLotTest {
 
         assertEquals("the ticket is invalid", exception.getMessage());
     }
+
 }

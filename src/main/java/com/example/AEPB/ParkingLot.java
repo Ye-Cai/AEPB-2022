@@ -16,7 +16,7 @@ public class ParkingLot {
         if (ticketCarMap.size() >= maxCapacity) {
             throw new RuntimeException("the parking lot is full");
         }
-        if(ticketCarMap.containsValue(car)){
+        if (ticketCarMap.containsValue(car)) {
             throw new RuntimeException("the car has checked in");
         }
         Ticket ticket = new Ticket();
@@ -25,7 +25,7 @@ public class ParkingLot {
     }
 
     public Car pick(Ticket ticket) {
-        if(!ticketCarMap.containsKey(ticket)){
+        if (!ticketCarMap.containsKey(ticket)) {
             throw new RuntimeException("the ticket is invalid");
         }
         Car car = ticketCarMap.get(ticket);
