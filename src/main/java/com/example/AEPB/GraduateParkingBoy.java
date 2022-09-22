@@ -10,6 +10,10 @@ public class GraduateParkingBoy {
     }
 
     public Ticket park(Car car) {
-        return parkingLots.get(0).park(car);
+        return parkingLots.stream()
+                          .dropWhile(ParkingLot::isFull)
+                          .findFirst()
+                          .map(parkingLot -> parkingLot.park(car))
+                          .orElse(null);
     }
 }

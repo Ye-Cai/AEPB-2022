@@ -24,8 +24,9 @@ class GraduateParkingBoyTest {
 
 
     @Test
-    void should_success_park_in_B_parking_lot_when_park_car_give_A_parking_lot_is_full_and_B_C__parking_lot_not_full() {
-        ParkingLot parkingLotA = new ParkingLot(0, "A");
+    void should_success_park_in_B_parking_lot_when_park_car_give_A_parking_lot_is_full_and_B_C_parking_lot_not_full() {
+        ParkingLot parkingLotA = new ParkingLot(1, "A");
+        parkingLotA.park(new Car("鄂B12345"));
         ParkingLot parkingLotB = new ParkingLot(100, "B");
         ParkingLot parkingLotC = new ParkingLot(100, "C");
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
