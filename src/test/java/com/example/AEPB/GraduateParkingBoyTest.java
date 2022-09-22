@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GraduateParkingBoyTest {
     @Test
@@ -50,6 +52,7 @@ class GraduateParkingBoyTest {
         assertNotNull(car);
         assertEquals("鄂A12345", car.getLicenseNumber());
     }
+
     @Test
     void should_throw_exception_when_parking_car_give_A_B_C_parking_is_full() {
         ParkingLot parkingLotA = new ParkingLot(0, "A");
@@ -59,9 +62,8 @@ class GraduateParkingBoyTest {
         Car car = new Car("鄂A12345");
 
         RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> graduateParkingBoy.park(car));
+            () -> graduateParkingBoy.park(car));
 
         assertEquals("all parking lot is full", exception.getMessage());
-
     }
 }
