@@ -2,8 +2,6 @@ package com.example.AEPB;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotTest {
@@ -37,7 +35,7 @@ class ParkingLotTest {
         Car car2 = new Car("鄂A654321");
 
         RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> parkingLot.park(car2));
+            () -> parkingLot.park(car2));
 
         assertEquals("the parking lot is full", exception.getMessage());
     }
@@ -50,7 +48,7 @@ class ParkingLotTest {
         Car car2 = new Car("鄂A123456");
 
         RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> parkingLot.park(car2));
+            () -> parkingLot.park(car2));
 
         assertEquals("the car has checked in", exception.getMessage());
     }
@@ -63,7 +61,7 @@ class ParkingLotTest {
         parkingLot.pick(ticket);
 
         RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> parkingLot.pick(ticket));
+            () -> parkingLot.pick(ticket));
 
         assertEquals("the ticket is invalid", exception.getMessage());
     }
@@ -74,24 +72,8 @@ class ParkingLotTest {
         Ticket ticket = new Ticket();
 
         RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> parkingLot.pick(ticket));
+            () -> parkingLot.pick(ticket));
 
         assertEquals("the ticket is invalid", exception.getMessage());
     }
-
-
-    @Test
-    void should_get_ticket_when_parking_by_gay_when_parkABC_is_not_full_and_carplate_number_is_valid() {
-        List<ChildParkingLot> childParkingLots = List.of(
-                new ChildParkingLot(1, "A"),
-                new ChildParkingLot(2, "B"),
-                new ChildParkingLot(3, "C"));
-        ParkingLot parkingLot = new ParkingLot(100, childParkingLots);
-        Car car = new Car("鄂A123456");
-        Ticket ticket = parkingLot.park(car);
-        assertEquals(car, ticket.getCar());
-        assertEquals("A", ticket.getChildParkingLot().getName());
-    }
-
-
 }
