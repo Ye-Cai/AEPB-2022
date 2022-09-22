@@ -82,4 +82,24 @@ class GraduateParkingBoyTest {
 
         assertEquals("the car has checked in", exception.getMessage());
     }
+
+    @Test
+    void should_throw_exception_when_pick_car_give_car_had_been_pick() {
+        ParkingLot parkingLotA = new ParkingLot(10, "A");
+        ParkingLot parkingLotB = new ParkingLot(10, "B");
+        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
+
+        Car car = new Car("鄂A12345");
+        Ticket ticket = graduateParkingBoy.park(car);
+        graduateParkingBoy.pick(ticket);
+        assertNotNull(car);
+        assertEquals("鄂A12345", car.getLicenseNumber());
+
+
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> graduateParkingBoy.pick(ticket));
+
+        assertEquals("the ticket is invalid", exception.getMessage());
+    }
 }
