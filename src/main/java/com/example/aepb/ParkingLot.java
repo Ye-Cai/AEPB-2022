@@ -3,6 +3,7 @@ package com.example.aepb;
 import com.example.aepb.exception.CarHasCheckedInException;
 import com.example.aepb.exception.ParkingLotFullException;
 import com.example.aepb.exception.TicketInvalidException;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,16 +11,13 @@ import java.util.Map;
 public class ParkingLot {
     private final int maxCapacity;
     private final Map<Ticket, Car> ticketCarMap;
+    @Getter
     private final String name;
 
     public ParkingLot(int maxCapacity, String name) {
         this.maxCapacity = maxCapacity;
         this.ticketCarMap = new HashMap<>(maxCapacity);
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Ticket park(Car car) {
