@@ -1,8 +1,8 @@
-package com.example.AEPB;
+package com.example.aepb;
 
-import com.example.AEPB.exception.CarHasCheckedInException;
-import com.example.AEPB.exception.ParkingLotFullException;
-import com.example.AEPB.exception.TicketInvalidException;
+import com.example.aepb.exception.CarHasCheckedInException;
+import com.example.aepb.exception.ParkingLotFullException;
+import com.example.aepb.exception.TicketInvalidException;
 
 import java.util.HashMap;
 import java.util.Map;

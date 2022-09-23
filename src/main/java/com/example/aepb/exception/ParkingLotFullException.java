@@ -1,4 +1,4 @@
-package com.example.AEPB.exception;
+package com.example.aepb.exception;
 
 public class ParkingLotFullException extends RuntimeException{
     private ParkingLotFullException(String message) {

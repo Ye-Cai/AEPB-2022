@@ -1,4 +1,4 @@
-package com.example.AEPB;
+package com.example.aepb;
 
 import org.junit.jupiter.api.Test;
 

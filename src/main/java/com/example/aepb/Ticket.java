@@ -1,4 +1,4 @@
-package com.example.AEPB;
+package com.example.aepb;
 
 public class Ticket {
     private final ParkingLot parkingLot;

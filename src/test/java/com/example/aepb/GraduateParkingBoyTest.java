@@ -1,6 +1,6 @@
-package com.example.AEPB;
+package com.example.aepb;
 
-import com.example.AEPB.exception.ParkingLotFullException;
+import com.example.aepb.exception.ParkingLotFullException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
