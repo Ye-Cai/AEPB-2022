@@ -1,6 +1,8 @@
 package com.example.AEPB;
 
+import com.example.AEPB.exception.CarHasCheckedInException;
 import com.example.AEPB.exception.ParkingLotFullException;
+import com.example.AEPB.exception.TicketInvalidException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,13 +34,13 @@ public class ParkingLot {
 
     public void checkCarExistInParkingLot(Car car) {
         if (ticketCarMap.containsValue(car)) {
-            throw new RuntimeException("the car has checked in");
+            throw new CarHasCheckedInException();
         }
     }
 
     public Car pick(Ticket ticket) {
         if (!ticketCarMap.containsKey(ticket)) {
-            throw new RuntimeException("the ticket is invalid");
+            throw new TicketInvalidException();
         }
         Car car = ticketCarMap.get(ticket);
         ticketCarMap.remove(ticket);
