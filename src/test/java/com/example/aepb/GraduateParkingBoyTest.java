@@ -1,6 +1,7 @@
 package com.example.aepb;
 
 import com.example.aepb.exception.ParkingLotFullException;
+import com.example.aepb.exception.TicketInvalidException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -99,6 +100,20 @@ class GraduateParkingBoyTest {
 
         RuntimeException exception = assertThrows(RuntimeException.class,
                 () -> graduateParkingBoy.pick(ticket));
+
+        assertEquals("the ticket is invalid", exception.getMessage());
+    }
+
+    @Test
+    void should_throw_exception_when_pick_car_give_ticket_invalid() {
+        ParkingLot parkingLotA = new ParkingLot(10, "A");
+        ParkingLot parkingLotB = new ParkingLot(10, "B");
+        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
+        Ticket ticket = new Ticket(null);
+
+        TicketInvalidException exception = assertThrows(TicketInvalidException.class,
+            () -> graduateParkingBoy.pick(ticket));
 
         assertEquals("the ticket is invalid", exception.getMessage());
     }

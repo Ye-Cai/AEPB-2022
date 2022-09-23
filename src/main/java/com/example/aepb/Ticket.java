@@ -1,13 +1,16 @@
 package com.example.aepb;
 
+import lombok.Getter;
+
+import java.util.Optional;
+
+@Getter
 public class Ticket {
-    private final ParkingLot parkingLot;
+    private final String parkingLotName;
 
     public Ticket(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
-    }
-
-    public String getParkingLotName() {
-        return parkingLot.getName();
+        this.parkingLotName = Optional.ofNullable(parkingLot)
+                                      .map(ParkingLot::getName)
+                                      .orElse(null);
     }
 }

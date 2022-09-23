@@ -1,6 +1,7 @@
 package com.example.aepb;
 
 import com.example.aepb.exception.ParkingLotFullException;
+import com.example.aepb.exception.TicketInvalidException;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class GraduateParkingBoy {
     }
 
     public Ticket park(Car car) {
-        parkingLots.forEach(lot-> lot.checkCarExistInParkingLot(car));
+        parkingLots.forEach(lot -> lot.checkCarExistInParkingLot(car));
         return parkingLots.stream()
                           .dropWhile(ParkingLot::isFull)
                           .findFirst()
@@ -24,6 +25,8 @@ public class GraduateParkingBoy {
         String parkingLotName = ticket.getParkingLotName();
         return parkingLots.stream()
                           .filter(lot -> lot.getName().equals(parkingLotName))
-                          .findFirst().map(lot -> lot.pick(ticket)).orElse(null);
+                          .findFirst()
+                          .map(lot -> lot.pick(ticket))
+                          .orElseThrow(TicketInvalidException::new);
     }
 }
