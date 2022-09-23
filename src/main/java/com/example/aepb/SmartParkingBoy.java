@@ -2,15 +2,14 @@ package com.example.aepb;
 
 import java.util.List;
 
-public class SmartParkingBoy {
-    private final List<ParkingLot> parkingLots;
+public class SmartParkingBoy extends GraduateParkingBoy {
 
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super(parkingLots);
     }
 
+    @Override
     public Ticket park(Car car) {
-        return null;
+        return super.park(car);
     }
-
 }
