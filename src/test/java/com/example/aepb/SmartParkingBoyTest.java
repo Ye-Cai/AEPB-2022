@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class SmartParkingBoyTest {
     @Test
     void should_success_get_the_empty_count_max_parking_lot_ticket_when_park_car_give_all_parking_lot_same_empty_count() {
-        ParkingLot parkingLotA = new ParkingLot(100, "A");
-        ParkingLot parkingLotB = new ParkingLot(100, "B");
-        ParkingLot parkingLotC = new ParkingLot(100, "C");
+        ParkingLot parkingLotA = new ParkingLot(100);
+        ParkingLot parkingLotB = new ParkingLot(100);
+        ParkingLot parkingLotC = new ParkingLot(100);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car givenCar = new Car("鄂A12345");
 
@@ -28,9 +28,9 @@ class SmartParkingBoyTest {
 
     @Test
     void should_success_get_the_empty_count_max_parking_lot_C_ticket_when_park_car_given_parking_empty_count_A_3_B_4_C_5() {
-        ParkingLot parkingLotA = new ParkingLot(3, "A");
-        ParkingLot parkingLotB = new ParkingLot(4, "B");
-        ParkingLot parkingLotC = new ParkingLot(5, "C");
+        ParkingLot parkingLotA = new ParkingLot(3);
+        ParkingLot parkingLotB = new ParkingLot(4);
+        ParkingLot parkingLotC = new ParkingLot(5);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car givenCar = new Car("鄂A12345");
 
@@ -43,9 +43,9 @@ class SmartParkingBoyTest {
 
     @Test
     void should_success_get_the_empty_count_max_parking_lot_A_ticket_when_park_car_given_parking_empty_count_A_6_B_3_C_5() {
-        ParkingLot parkingLotA = new ParkingLot(6, "A");
-        ParkingLot parkingLotB = new ParkingLot(3, "B");
-        ParkingLot parkingLotC = new ParkingLot(5, "C");
+        ParkingLot parkingLotA = new ParkingLot(6);
+        ParkingLot parkingLotB = new ParkingLot(3);
+        ParkingLot parkingLotC = new ParkingLot(5);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car givenCar = new Car("鄂A12345");
 
@@ -58,9 +58,9 @@ class SmartParkingBoyTest {
 
     @Test
     void should_success_pick_the_car_from_B_parking_lot_when_pick_car_give_B_parking_lot_ticket() {
-        ParkingLot parkingLotA = new ParkingLot(100, "A");
-        ParkingLot parkingLotB = new ParkingLot(100, "B");
-        ParkingLot parkingLotC = new ParkingLot(100, "C");
+        ParkingLot parkingLotA = new ParkingLot(100);
+        ParkingLot parkingLotB = new ParkingLot(100);
+        ParkingLot parkingLotC = new ParkingLot(100);
         Car givenCar = new Car("鄂A12345");
         Ticket ticket = parkingLotB.park(givenCar);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
@@ -73,9 +73,9 @@ class SmartParkingBoyTest {
 
     @Test
     void should_throw_exception_when_parking_car_give_A_B_C_parking_is_full() {
-        ParkingLot parkingLotA = new ParkingLot(0, "A");
-        ParkingLot parkingLotB = new ParkingLot(0, "B");
-        ParkingLot parkingLotC = new ParkingLot(0, "C");
+        ParkingLot parkingLotA = new ParkingLot(0);
+        ParkingLot parkingLotB = new ParkingLot(0);
+        ParkingLot parkingLotC = new ParkingLot(0);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car car = new Car("鄂A12345");
 
@@ -87,9 +87,9 @@ class SmartParkingBoyTest {
 
     @Test
     void should_throw_exception_when_parking_car_give_two_car_with_same_license_number() {
-        ParkingLot parkingLotA = new ParkingLot(10, "A");
-        ParkingLot parkingLotB = new ParkingLot(10, "B");
-        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        ParkingLot parkingLotA = new ParkingLot(10);
+        ParkingLot parkingLotB = new ParkingLot(10);
+        ParkingLot parkingLotC = new ParkingLot(10);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car givenCar = new Car("鄂A12345");
         parkingLotB.park(givenCar);
@@ -102,9 +102,9 @@ class SmartParkingBoyTest {
 
     @Test
     void should_throw_exception_when_pick_car_give_car_had_been_pick() {
-        ParkingLot parkingLotA = new ParkingLot(10, "A");
-        ParkingLot parkingLotB = new ParkingLot(10, "B");
-        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        ParkingLot parkingLotA = new ParkingLot(10);
+        ParkingLot parkingLotB = new ParkingLot(10);
+        ParkingLot parkingLotC = new ParkingLot(10);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car car = new Car("鄂A12345");
         Ticket ticket = parkingLotB.park(car);
@@ -118,9 +118,9 @@ class SmartParkingBoyTest {
 
     @Test
     void should_throw_exception_when_pick_car_give_ticket_invalid() {
-        ParkingLot parkingLotA = new ParkingLot(10, "A");
-        ParkingLot parkingLotB = new ParkingLot(10, "B");
-        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        ParkingLot parkingLotA = new ParkingLot(10);
+        ParkingLot parkingLotB = new ParkingLot(10);
+        ParkingLot parkingLotC = new ParkingLot(10);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Ticket ticket = new Ticket();
 

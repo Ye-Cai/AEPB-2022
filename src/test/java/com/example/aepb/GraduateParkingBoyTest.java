@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class GraduateParkingBoyTest {
     @Test
     void should_success_get_the_first_parking_lot_ticket_when_park_car_give_all_parking_lot_not_full() {
-        ParkingLot parkingLotA = new ParkingLot(100, "A");
-        ParkingLot parkingLotB = new ParkingLot(100, "B");
-        ParkingLot parkingLotC = new ParkingLot(100, "C");
+        ParkingLot parkingLotA = new ParkingLot(100);
+        ParkingLot parkingLotB = new ParkingLot(100);
+        ParkingLot parkingLotC = new ParkingLot(100);
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car givenCar = new Car("鄂A12345");
 
@@ -29,10 +29,10 @@ class GraduateParkingBoyTest {
 
     @Test
     void should_success_park_in_B_parking_lot_when_park_car_give_A_parking_lot_is_full_and_B_C_parking_lot_not_full() {
-        ParkingLot parkingLotA = new ParkingLot(1, "A");
+        ParkingLot parkingLotA = new ParkingLot(1);
         parkingLotA.park(new Car("鄂B12345"));
-        ParkingLot parkingLotB = new ParkingLot(100, "B");
-        ParkingLot parkingLotC = new ParkingLot(100, "C");
+        ParkingLot parkingLotB = new ParkingLot(100);
+        ParkingLot parkingLotC = new ParkingLot(100);
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car givenCar = new Car("鄂A12345");
 
@@ -45,10 +45,10 @@ class GraduateParkingBoyTest {
 
     @Test
     void should_success_pick_the_car_from_B_parking_lot_when_pick_car_give_B_parking_lot_ticket() {
-        ParkingLot parkingLotA = new ParkingLot(100, "A");
-        ParkingLot parkingLotB = new ParkingLot(100, "B");
+        ParkingLot parkingLotA = new ParkingLot(100);
+        ParkingLot parkingLotB = new ParkingLot(100);
         Ticket ticket = parkingLotB.park(new Car("鄂A12345"));
-        ParkingLot parkingLotC = new ParkingLot(100, "C");
+        ParkingLot parkingLotC = new ParkingLot(100);
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
 
         Car car = graduateParkingBoy.pick(ticket);
@@ -59,9 +59,9 @@ class GraduateParkingBoyTest {
 
     @Test
     void should_throw_exception_when_parking_car_give_A_B_C_parking_is_full() {
-        ParkingLot parkingLotA = new ParkingLot(0, "A");
-        ParkingLot parkingLotB = new ParkingLot(0, "B");
-        ParkingLot parkingLotC = new ParkingLot(0, "C");
+        ParkingLot parkingLotA = new ParkingLot(0);
+        ParkingLot parkingLotB = new ParkingLot(0);
+        ParkingLot parkingLotC = new ParkingLot(0);
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car car = new Car("鄂A12345");
 
@@ -73,10 +73,10 @@ class GraduateParkingBoyTest {
 
     @Test
     void should_throw_exception_when_parking_car_give_two_car_with_same_license_number() {
-        ParkingLot parkingLotA = new ParkingLot(10, "A");
-        ParkingLot parkingLotB = new ParkingLot(10, "B");
+        ParkingLot parkingLotA = new ParkingLot(10);
+        ParkingLot parkingLotB = new ParkingLot(10);
         parkingLotB.park(new Car("鄂A12345"));
-        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        ParkingLot parkingLotC = new ParkingLot(10);
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car car = new Car("鄂A12345");
 
@@ -88,9 +88,9 @@ class GraduateParkingBoyTest {
 
     @Test
     void should_throw_exception_when_pick_car_give_car_had_been_pick() {
-        ParkingLot parkingLotA = new ParkingLot(10, "A");
-        ParkingLot parkingLotB = new ParkingLot(10, "B");
-        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        ParkingLot parkingLotA = new ParkingLot(10);
+        ParkingLot parkingLotB = new ParkingLot(10);
+        ParkingLot parkingLotC = new ParkingLot(10);
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
 
         Car car = new Car("鄂A12345");
@@ -108,9 +108,9 @@ class GraduateParkingBoyTest {
 
     @Test
     void should_throw_exception_when_pick_car_give_ticket_invalid() {
-        ParkingLot parkingLotA = new ParkingLot(10, "A");
-        ParkingLot parkingLotB = new ParkingLot(10, "B");
-        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        ParkingLot parkingLotA = new ParkingLot(10);
+        ParkingLot parkingLotB = new ParkingLot(10);
+        ParkingLot parkingLotC = new ParkingLot(10);
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
         Ticket ticket = new Ticket();
 
