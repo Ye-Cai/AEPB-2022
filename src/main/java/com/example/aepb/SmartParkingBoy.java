@@ -1,13 +1,15 @@
 package com.example.aepb;
 
 import com.example.aepb.exception.ParkingLotFullException;
+import com.example.aepb.exception.TicketInvalidException;
 
 import java.util.List;
 
-public class SmartParkingBoy extends GraduateParkingBoy {
+public class SmartParkingBoy implements ParkingBoy {
+    private final List<ParkingLot> parkingLots;
 
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
-        super(parkingLots);
+        this.parkingLots = parkingLots;
     }
 
     @Override
@@ -19,5 +21,14 @@ public class SmartParkingBoy extends GraduateParkingBoy {
                               Integer.compare(parkingLotY.getEmptySize(), parkingLotX.getEmptySize()))
                           .map(parkingLot -> parkingLot.park(car))
                           .orElseThrow(ParkingLotFullException::ofAll);
+    }
+
+    @Override
+    public Car pick(Ticket ticket) {
+        return parkingLots.stream()
+                          .filter(lot -> lot.isContainTicket(ticket))
+                          .findFirst()
+                          .map(lot -> lot.pick(ticket))
+                          .orElseThrow(TicketInvalidException::new);
     }
 }

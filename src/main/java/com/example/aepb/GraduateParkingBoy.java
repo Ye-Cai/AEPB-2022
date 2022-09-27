@@ -5,13 +5,14 @@ import com.example.aepb.exception.TicketInvalidException;
 
 import java.util.List;
 
-public class GraduateParkingBoy {
-    protected final List<ParkingLot> parkingLots;
+public class GraduateParkingBoy implements ParkingBoy {
+    private final List<ParkingLot> parkingLots;
 
     public GraduateParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
+    @Override
     public Ticket park(Car car) {
         parkingLots.forEach(lot -> lot.checkCarExistInParkingLot(car));
         return parkingLots.stream()
@@ -21,6 +22,7 @@ public class GraduateParkingBoy {
                           .orElseThrow(ParkingLotFullException::ofAll);
     }
 
+    @Override
     public Car pick(Ticket ticket) {
         return parkingLots.stream()
                           .filter(lot -> lot.isContainTicket(ticket))
