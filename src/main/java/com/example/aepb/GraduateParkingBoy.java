@@ -6,7 +6,7 @@ import com.example.aepb.exception.TicketInvalidException;
 import java.util.List;
 
 public class GraduateParkingBoy {
-    private final List<ParkingLot> parkingLots;
+    protected final List<ParkingLot> parkingLots;
 
     public GraduateParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;

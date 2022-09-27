@@ -10,6 +10,8 @@ public class SmartParkingBoy extends GraduateParkingBoy {
 
     @Override
     public Ticket park(Car car) {
-        return super.park(car);
+        ParkingLot emptyMaxParkingLot = parkingLots.stream().min((x, y) -> Integer.compare(y.getEmptySize(), x.getEmptySize()))
+                .orElseThrow(() -> new RuntimeException("get emptyMaxParkingLot fail"));
+        return emptyMaxParkingLot.park(car);
     }
 }

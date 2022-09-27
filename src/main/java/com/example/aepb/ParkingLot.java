@@ -48,4 +48,8 @@ public class ParkingLot {
     public boolean isFull() {
         return ticketCarMap.size() == maxCapacity;
     }
+
+    public int getEmptySize() {
+        return maxCapacity - ticketCarMap.size();
+    }
 }
