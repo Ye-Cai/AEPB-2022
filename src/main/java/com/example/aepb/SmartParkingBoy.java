@@ -12,6 +12,7 @@ public class SmartParkingBoy extends GraduateParkingBoy {
 
     @Override
     public Ticket park(Car car) {
+        parkingLots.forEach(lot -> lot.checkCarExistInParkingLot(car));
         return parkingLots.stream()
                           .filter(parkingLot -> !parkingLot.isFull())
                           .min((parkingLotX, parkingLotY) ->
