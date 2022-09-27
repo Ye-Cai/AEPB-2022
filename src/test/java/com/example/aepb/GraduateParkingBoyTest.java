@@ -17,12 +17,13 @@ class GraduateParkingBoyTest {
         ParkingLot parkingLotB = new ParkingLot(100, "B");
         ParkingLot parkingLotC = new ParkingLot(100, "C");
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
-        Car car = new Car("鄂A12345");
+        Car givenCar = new Car("鄂A12345");
 
-        Ticket ticket = graduateParkingBoy.park(car);
+        Ticket ticket = graduateParkingBoy.park(givenCar);
 
         assertNotNull(ticket);
-        assertEquals("A", ticket.getParkingLotName());
+        Car pickedCar = parkingLotA.pick(ticket);
+        assertEquals(givenCar, pickedCar);
     }
 
 
@@ -33,12 +34,13 @@ class GraduateParkingBoyTest {
         ParkingLot parkingLotB = new ParkingLot(100, "B");
         ParkingLot parkingLotC = new ParkingLot(100, "C");
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
-        Car car = new Car("鄂A12345");
+        Car givenCar = new Car("鄂A12345");
 
-        Ticket ticket = graduateParkingBoy.park(car);
+        Ticket ticket = graduateParkingBoy.park(givenCar);
 
         assertNotNull(ticket);
-        assertEquals("B", ticket.getParkingLotName());
+        Car pickedCar = parkingLotB.pick(ticket);
+        assertEquals(givenCar, pickedCar);
     }
 
     @Test
