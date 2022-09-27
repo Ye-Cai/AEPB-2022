@@ -1,6 +1,7 @@
 package com.example.aepb;
 
 import com.example.aepb.exception.ParkingLotFullException;
+import com.example.aepb.exception.TicketInvalidException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -94,5 +95,35 @@ class SmartParkingBoyTest {
             () -> smartParkingBoy.park(givenCar));
 
         assertEquals("the car has checked in", exception.getMessage());
+    }
+
+    @Test
+    void should_throw_exception_when_pick_car_give_car_had_been_pick() {
+        ParkingLot parkingLotA = new ParkingLot(10, "A");
+        ParkingLot parkingLotB = new ParkingLot(10, "B");
+        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
+        Car car = new Car("鄂A12345");
+        Ticket ticket = parkingLotB.park(car);
+        parkingLotB.pick(ticket);
+
+        RuntimeException exception = assertThrows(RuntimeException.class,
+            () -> smartParkingBoy.pick(ticket));
+
+        assertEquals("the ticket is invalid", exception.getMessage());
+    }
+
+    @Test
+    void should_throw_exception_when_pick_car_give_ticket_invalid() {
+        ParkingLot parkingLotA = new ParkingLot(10, "A");
+        ParkingLot parkingLotB = new ParkingLot(10, "B");
+        ParkingLot parkingLotC = new ParkingLot(10, "C");
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
+        Ticket ticket = new Ticket(null);
+
+        TicketInvalidException exception = assertThrows(TicketInvalidException.class,
+            () -> smartParkingBoy.pick(ticket));
+
+        assertEquals("the ticket is invalid", exception.getMessage());
     }
 }
