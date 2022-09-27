@@ -52,4 +52,8 @@ public class ParkingLot {
     public int getEmptySize() {
         return maxCapacity - ticketCarMap.size();
     }
+
+    public double getEmptyRat() {
+        return ((double) getEmptySize()) / (double) maxCapacity;
+    }
 }

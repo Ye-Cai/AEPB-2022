@@ -1,5 +1,6 @@
 package com.example.aepb;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class ParkingRobot implements ParkingBoy {
@@ -11,7 +12,11 @@ public class ParkingRobot implements ParkingBoy {
 
     @Override
     public Ticket park(Car car) {
-        return parkingLots.get(0).park(car);
+        return parkingLots.stream()
+                          .filter(parkingLot -> !parkingLot.isFull())
+                          .max(Comparator.comparingDouble(ParkingLot::getEmptyRat))
+                          .map(parkingLot -> parkingLot.park(car))
+                          .orElse(null);
     }
 
     @Override
