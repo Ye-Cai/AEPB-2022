@@ -1,11 +1,13 @@
 package com.example.aepb;
 
+import com.example.aepb.exception.ParkingLotFullException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SmartParkingBoyTest {
     @Test
@@ -63,5 +65,19 @@ class SmartParkingBoyTest {
 
         assertNotNull(pickedCar);
         assertEquals(givenCar, pickedCar);
+    }
+
+    @Test
+    void should_throw_exception_when_parking_car_give_A_B_C_parking_is_full() {
+        ParkingLot parkingLotA = new ParkingLot(0, "A");
+        ParkingLot parkingLotB = new ParkingLot(0, "B");
+        ParkingLot parkingLotC = new ParkingLot(0, "C");
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
+        Car car = new Car("鄂A12345");
+
+        ParkingLotFullException exception = assertThrows(ParkingLotFullException.class,
+            () -> smartParkingBoy.park(car));
+
+        assertEquals("all parking lot is full", exception.getMessage());
     }
 }
