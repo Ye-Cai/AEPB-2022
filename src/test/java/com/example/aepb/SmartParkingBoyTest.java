@@ -50,5 +50,18 @@ class SmartParkingBoyTest {
         assertEquals("A", ticket.getParkingLotName());
     }
 
+    @Test
+    void should_success_pick_the_car_from_B_parking_lot_when_pick_car_give_B_parking_lot_ticket() {
+        ParkingLot parkingLotA = new ParkingLot(100, "A");
+        ParkingLot parkingLotB = new ParkingLot(100, "B");
+        ParkingLot parkingLotC = new ParkingLot(100, "C");
+        Car givenCar = new Car("鄂A12345");
+        Ticket ticket = parkingLotB.park(givenCar);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
 
+        Car pickedCar = smartParkingBoy.pick(ticket);
+
+        assertNotNull(pickedCar);
+        assertEquals(givenCar, pickedCar);
+    }
 }
