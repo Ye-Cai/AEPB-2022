@@ -112,7 +112,7 @@ class GraduateParkingBoyTest {
         ParkingLot parkingLotB = new ParkingLot(10, "B");
         ParkingLot parkingLotC = new ParkingLot(10, "C");
         GraduateParkingBoy graduateParkingBoy = new GraduateParkingBoy(List.of(parkingLotA, parkingLotB, parkingLotC));
-        Ticket ticket = new Ticket(null);
+        Ticket ticket = new Ticket();
 
         TicketInvalidException exception = assertThrows(TicketInvalidException.class,
             () -> graduateParkingBoy.pick(ticket));

@@ -25,7 +25,7 @@ public class ParkingLot {
             throw ParkingLotFullException.ofOne();
         }
         checkCarExistInParkingLot(car);
-        Ticket ticket = new Ticket(this);
+        Ticket ticket = new Ticket();
         ticketCarMap.put(ticket, car);
         return ticket;
     }
@@ -43,6 +43,10 @@ public class ParkingLot {
         Car car = ticketCarMap.get(ticket);
         ticketCarMap.remove(ticket);
         return car;
+    }
+
+    public boolean isContainTicket(Ticket ticket) {
+        return ticketCarMap.containsKey(ticket);
     }
 
     public boolean isFull() {

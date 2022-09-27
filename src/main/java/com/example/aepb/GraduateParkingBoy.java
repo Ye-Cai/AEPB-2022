@@ -22,9 +22,8 @@ public class GraduateParkingBoy {
     }
 
     public Car pick(Ticket ticket) {
-        String parkingLotName = ticket.getParkingLotName();
         return parkingLots.stream()
-                          .filter(lot -> lot.getName().equals(parkingLotName))
+                          .filter(lot -> lot.isContainTicket(ticket))
                           .findFirst()
                           .map(lot -> lot.pick(ticket))
                           .orElseThrow(TicketInvalidException::new);

@@ -71,7 +71,7 @@ class ParkingLotTest {
     @Test
     void should_throw_the_invalid_ticket_exception_when_pick_a_car_give_wrong_ticket() {
         ParkingLot parkingLot = new ParkingLot(100, "default");
-        Ticket ticket = new Ticket(null);
+        Ticket ticket = new Ticket();
 
         RuntimeException exception = assertThrows(RuntimeException.class,
             () -> parkingLot.pick(ticket));
