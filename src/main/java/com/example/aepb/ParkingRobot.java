@@ -14,7 +14,7 @@ public class ParkingRobot implements ParkingBoy {
     public Ticket park(Car car) {
         return parkingLots.stream()
                           .filter(parkingLot -> !parkingLot.isFull())
-                          .max(Comparator.comparingDouble(ParkingLot::getEmptyRat))
+                          .max(Comparator.comparingDouble(ParkingLot::getEmptyRate))
                           .map(parkingLot -> parkingLot.park(car))
                           .orElse(null);
     }

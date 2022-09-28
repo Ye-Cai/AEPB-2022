@@ -3,6 +3,7 @@ package com.example.aepb;
 import com.example.aepb.exception.ParkingLotFullException;
 import com.example.aepb.exception.TicketInvalidException;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class SmartParkingBoy implements ParkingBoy {
@@ -17,8 +18,7 @@ public class SmartParkingBoy implements ParkingBoy {
         parkingLots.forEach(lot -> lot.checkCarExistInParkingLot(car));
         return parkingLots.stream()
                           .filter(parkingLot -> !parkingLot.isFull())
-                          .min((parkingLotX, parkingLotY) ->
-                              Integer.compare(parkingLotY.getEmptySize(), parkingLotX.getEmptySize()))
+                          .max(Comparator.comparingInt(ParkingLot::getEmptySize))
                           .map(parkingLot -> parkingLot.park(car))
                           .orElseThrow(ParkingLotFullException::ofAll);
     }
