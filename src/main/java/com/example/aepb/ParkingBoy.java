@@ -1,5 +1,7 @@
 package com.example.aepb;
 
+import com.example.aepb.exception.TicketInvalidException;
+
 import java.util.List;
 
 public abstract class ParkingBoy {
@@ -10,7 +12,19 @@ public abstract class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    abstract Ticket park(Car car);
+    public Ticket park(Car car) {
+        parkingLots.forEach(lot -> lot.checkCarExistInParkingLot(car));
+        ParkingLot parkingLot = findParkingLot();
+        return parkingLot.park(car);
+    }
 
-    abstract Car pick(Ticket ticket);
+    protected abstract ParkingLot findParkingLot();
+
+    public Car pick(Ticket ticket) {
+        return parkingLots.stream()
+                          .filter(lot -> lot.isContainTicket(ticket))
+                          .findFirst()
+                          .map(lot -> lot.pick(ticket))
+                          .orElseThrow(TicketInvalidException::new);
+    }
 }

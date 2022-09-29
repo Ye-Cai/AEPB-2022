@@ -33,7 +33,7 @@ class ParingRobotTest {
         parkingLotB.park(new Car("鄂A22222"));
         ParkingLot parkingLotC = new ParkingLot(4);
         parkingLotC.park(new Car("鄂A33333"));
-        ParkingBoy parkingRobot = new ParkingRobot(List.of(parkingLotA, parkingLotB, parkingLotC));
+        ParkingRobot parkingRobot = new ParkingRobot(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car givenCar = new Car("鄂A12345");
 
         Ticket ticket = parkingRobot.park(givenCar);
@@ -51,7 +51,7 @@ class ParingRobotTest {
         parkingLotB.park(new Car("鄂A22222"));
         ParkingLot parkingLotC = new ParkingLot(3);
         parkingLotC.park(new Car("鄂A33333"));
-        ParkingBoy parkingRobot = new ParkingRobot(List.of(parkingLotA, parkingLotB, parkingLotC));
+        ParkingRobot parkingRobot = new ParkingRobot(List.of(parkingLotA, parkingLotB, parkingLotC));
         Car givenCar = new Car("鄂A12345");
 
         Ticket ticket = parkingRobot.park(givenCar);
