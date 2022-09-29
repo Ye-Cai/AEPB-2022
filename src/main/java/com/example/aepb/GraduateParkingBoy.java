@@ -5,11 +5,10 @@ import com.example.aepb.exception.TicketInvalidException;
 
 import java.util.List;
 
-public class GraduateParkingBoy implements ParkingBoy {
-    private final List<ParkingLot> parkingLots;
+public class GraduateParkingBoy extends ParkingBoy {
 
     public GraduateParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super( parkingLots);
     }
 
     @Override

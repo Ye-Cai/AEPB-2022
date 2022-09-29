@@ -5,11 +5,10 @@ import com.example.aepb.exception.ParkingLotFullException;
 import java.util.Comparator;
 import java.util.List;
 
-public class ParkingRobot implements ParkingBoy {
-    private final List<ParkingLot> parkingLots;
+public class ParkingRobot extends ParkingBoy {
 
     public ParkingRobot(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super( parkingLots);
     }
 
     @Override

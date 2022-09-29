@@ -1,9 +1,16 @@
 package com.example.aepb;
 
-public interface ParkingBoy {
+import java.util.List;
 
-    Ticket park(Car car);
+public abstract class ParkingBoy {
 
-    Car pick(Ticket ticket);
+    protected final List<ParkingLot> parkingLots;
 
+    protected ParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
+    }
+
+    abstract Ticket park(Car car);
+
+    abstract Car pick(Ticket ticket);
 }

@@ -6,11 +6,10 @@ import com.example.aepb.exception.TicketInvalidException;
 import java.util.Comparator;
 import java.util.List;
 
-public class SmartParkingBoy implements ParkingBoy {
-    private final List<ParkingLot> parkingLots;
+public class SmartParkingBoy extends ParkingBoy {
 
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super(parkingLots);
     }
 
     @Override
