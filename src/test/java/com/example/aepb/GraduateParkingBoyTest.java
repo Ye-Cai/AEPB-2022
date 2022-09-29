@@ -2,6 +2,7 @@ package com.example.aepb;
 
 import com.example.aepb.exception.ParkingLotFullException;
 import com.example.aepb.exception.TicketInvalidException;
+import com.example.aepb.pakingboy.GraduateParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
