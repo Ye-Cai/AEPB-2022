@@ -1,5 +1,7 @@
 package com.example.aepb;
 
+import com.example.aepb.exception.ParkingLotFullException;
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class ParkingRobot implements ParkingBoy {
                           .filter(parkingLot -> !parkingLot.isFull())
                           .max(Comparator.comparingDouble(ParkingLot::getEmptyRate))
                           .map(parkingLot -> parkingLot.park(car))
-                          .orElse(null);
+                          .orElseThrow(ParkingLotFullException::ofAll);
     }
 
     @Override
