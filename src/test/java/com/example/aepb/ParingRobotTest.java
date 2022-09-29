@@ -41,4 +41,22 @@ class ParingRobotTest {
         assertEquals(givenCar, pickedCar);
     }
 
+    @Test
+    void should_success_get_the_empty_rate_max_parking_lot_B_ticket_when_park_car_given_parking_empty_rate_parking_lot_B_and_C_max() {
+        ParkingLot parkingLotA = new ParkingLot(2);
+        parkingLotA.park(new Car("鄂A11111"));
+        ParkingLot parkingLotB = new ParkingLot(3);
+        parkingLotB.park(new Car("鄂A22222"));
+        ParkingLot parkingLotC = new ParkingLot(3);
+        parkingLotC.park(new Car("鄂A33333"));
+        ParkingBoy parkingRobot = new ParkingRobot(List.of(parkingLotA, parkingLotB, parkingLotC));
+        Car givenCar = new Car("鄂A12345");
+
+        Ticket ticket = parkingRobot.park(givenCar);
+
+        assertNotNull(ticket);
+        Car pickedCar = parkingLotB.pick(ticket);
+        assertEquals(givenCar, pickedCar);
+    }
+
 }
