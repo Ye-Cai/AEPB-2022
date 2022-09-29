@@ -14,6 +14,7 @@ public class ParkingRobot implements ParkingBoy {
 
     @Override
     public Ticket park(Car car) {
+        parkingLots.forEach(lot -> lot.checkCarExistInParkingLot(car));
         return parkingLots.stream()
                           .filter(parkingLot -> !parkingLot.isFull())
                           .max(Comparator.comparingDouble(ParkingLot::getEmptyRate))
